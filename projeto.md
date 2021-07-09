@@ -12,11 +12,11 @@
 * Um botão para iniciar o cálculo.
 * Texto pedindo para a pessoa informar os seus dados.
 * Permitir somente a entrada de teclado numérico do celular.
-* Verificação do preenchimento dos dados.
 * Design Arredondado (Opcional)
 
 ### Algoritmo
 
+* Verificação do preenchimento dos dados. 
 * Cálculo = Peso / Altura² (peso / (altura * altura))
 * Puxar as informações preenchidas no formulário.
 * Retornar o resultado e o grau do IMC que a pessoa tem:
