@@ -34,14 +34,9 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    //boxShadow: BoxShadow[]
-                  ),
-                  child: Icon(Icons.person,
+                child: Icon(Icons.person,
                     size: 150.0,
-                    color: Color(0xFF0000535),),
-                ),),
+                    color: Color(0xFF0000535),),),
               Center(
                 child: Padding(
                   padding: EdgeInsets.only(
@@ -108,7 +103,10 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(
                     left: 40.0,
                     right: 40.0,),
-                  child: TextFormField(
+                  child: Material(
+                    elevation: 10,
+                    borderRadius: BorderRadius.circular(50),
+                    child: TextFormField(
                           inputFormatters: [LengthLimitingTextInputFormatter(5),],
                           keyboardType: TextInputType.numberWithOptions(
                             signed: true,
@@ -137,6 +135,8 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                             color: Color(0xFFEAEAEA),
                             fontWeight: FontWeight.bold,),
+                  ),
+
                   ),
                 ),
               ),
