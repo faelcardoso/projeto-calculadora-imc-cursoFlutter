@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
             actions: <Widget>[ IconButton(
                   icon: Icon(Icons.refresh),
                   onPressed: () {
-                    debugPrint("Funcionou!");
+                    debugPrint("Reset");
                   }),
             ]),
         backgroundColor: Color(0xFFEAEAEA),
@@ -33,94 +34,129 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Center(
-                child: Icon(Icons.person,
+                child: Container(
+                  decoration: BoxDecoration(
+                    //boxShadow: BoxShadow[]
+                  ),
+                  child: Icon(Icons.person,
                     size: 150.0,
-                    color: Color(0xFF0000535),),),
+                    color: Color(0xFF0000535),),
+                ),),
               Center(
-                child: Text("Informe os seus Dados:"),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: Text("Informe os seus Dados:",
+                style: TextStyle(
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(-2.0, 2),
+                      blurRadius: 10,
+                      color: Colors.black38,
+                    )
+                  ],
+                  color: Color(0xFF0000535),
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),),),
               ),
               Center( // First Text Field
                 child: Padding(
                   padding: EdgeInsets.only(
                     left: 40.0,
                     right: 40.0,
-                    top: 20.0,
+                    top: 40.0,
                     bottom: 35.0,),
-                  child: TextFormField(
-                          textAlign: TextAlign.center,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(50),
+                    elevation: 10,
+                    child: TextFormField(
+                          inputFormatters: [LengthLimitingTextInputFormatter(5),],
                           keyboardType: TextInputType.numberWithOptions(
-                            signed: true),
+                            signed: true,
+                            decimal: true,),
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFF0000535),
+                            prefixIcon: Icon(Icons.fitness_center, color: Color(0xFFEAEAEA)),
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelStyle: TextStyle(
-                                color: Color(0xFF0000535),
-                                fontSize: 18),
+                                color: Color(0xFFEAEAEA),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                ),
                             labelText: "Peso (Kg)",
-                            hintText: "Digite o seu peso em quilogramas", 
+                            hintText: "Digite o seu peso", 
                             hintStyle: TextStyle(
-                                color: Color(0xFF0000535),
-                                fontSize: 18),
+                                color: Color(0xFFEAEAEA),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,),
                             enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(color: Color(0xFF0000535),
-                                width: 2.0,)
+                                borderRadius: BorderRadius.circular(50.0),
                               ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF0000535),
-                                    width: 4.0,
-                                  ),
-                                borderRadius: BorderRadius.circular(25.0),),),
+                                borderRadius: BorderRadius.circular(50.0),),),
                         style: TextStyle(
-                            color: Color(0xFF0000535),),
-                  ),
+                            color: Color(0xFFEAEAEA),
+                            fontWeight: FontWeight.bold,),
+                  ),),
                 ),
               ),
               Center( // Second Text Field
                 child: Padding(
-                padding: EdgeInsets.only(
+                  padding: EdgeInsets.only(
                     left: 40.0,
                     right: 40.0,),
-                child: TextFormField(
-                        textAlign: TextAlign.center,
-                        keyboardType: TextInputType.numberWithOptions(signed: true),
-                        decoration: InputDecoration(
+                  child: TextFormField(
+                          inputFormatters: [LengthLimitingTextInputFormatter(5),],
+                          keyboardType: TextInputType.numberWithOptions(
+                            signed: true,
+                            decimal: true,),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFF0000535),
+                            prefixIcon: Icon(Icons.accessibility_new, color: Color(0xFFEAEAEA)),
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            labelStyle: TextStyle(
+                                color: Color(0xFFEAEAEA),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                ),
                             labelText: "Altura (m)",
-                              labelStyle: TextStyle(
-                                color: Color(0xFF0000535),
-                                fontSize: 18,),
-                            hintText: "Digite a sua altura em metros",
-                              hintStyle: TextStyle(
-                                color: Color(0xFF0000535)),
+                            hintText: "Digite a sua altura", 
+                            hintStyle: TextStyle(
+                                color: Color(0xFFEAEAEA),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,),
                             enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(color: Color(0xFF0000535), width: 2.0,)),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xFF0000535),),
-                                borderRadius: BorderRadius.circular(25.0),),
-                            focusColor: Color(0xFFFFD290)),
+                                borderRadius: BorderRadius.circular(50.0),),),
                         style: TextStyle(
-                            color: Colors.black,)
-                            ,)
-                         ,)
-                      ,),
+                            color: Color(0xFFEAEAEA),
+                            fontWeight: FontWeight.bold,),
+                  ),
+                ),
+              ),
                    Center( // Calculate Button
                      child: Column(
                        children: <Widget> [
                          Padding(
                            padding: EdgeInsets.all(40.0),
                            child: ElevatedButton(
-                          child: Text("Calcular", style: TextStyle(color: Color(0xFF0000535), fontSize: 18,),),
-                           onPressed: () { // Calc Function
-                             debugPrint("Opa!");
-                           },
+                          child: Text("Calcular", 
+                            style: TextStyle(
+                              color: Color(0xFFEAEAEA),
+                              fontSize: 18,),),
+                          onPressed: () { // Calc Function
+                             debugPrint("Calculou!");},
                            style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Color(0xFFEAEAEA)),
-                            side: MaterialStateProperty.all(BorderSide(
-                              color: Color(0xFF0000535), 
-                              width: 2.0,)),
+                            fixedSize: MaterialStateProperty.all(Size(100.0, 55.0)),
+                            backgroundColor: MaterialStateProperty.all(Color(0xFF0000535)),
                             shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
+                              borderRadius: BorderRadius.circular(40.0),
                             )),
                            ),
                            ),),
